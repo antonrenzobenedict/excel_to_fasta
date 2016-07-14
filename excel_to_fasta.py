@@ -1,8 +1,9 @@
 #!/usr/bin/python
 
-import sys
-from openpyxl import load_workbook
 
+import sys
+
+from openpyxl import load_workbook
 reference = {}
 iupac = {"AA":"A", "GG":"G", "CC":"C", "TT":"T", "AG":"R", "TC":"Y", "AT":"W", "GC":"S", "TG":"K", "AC":"M", "--":"N"}
 

@@ -1,8 +1,11 @@
 #!/usr/bin/python
 
-import sys
-from openpyxl import load_workbook
 
+import sys
+import pip
+
+pip.main(['install','openpyxl'])
+from openpyxl import load_workbook
 reference = {}
 iupac = {"AA":"A", "GG":"G", "CC":"C", "TT":"T", "AG":"R", "TC":"Y", "AT":"W", "GC":"S", "TG":"K", "AC":"M", "--":"N"}
 
@@ -21,11 +24,10 @@ col_count = sheet.max_column
 
 
 
-for i in range(7,8):
+for i in range(7,row_count + 1):
         multi_fasta.write(">" + str(sheet.cell(row=i, column=4).value) + " " + str(sheet.cell(row=i, column=6).value) + "\n") 
         for j in range(14,col_count + 1):
                 position = str(sheet.cell(row=3, column=j).value)
                 if reference.get(position):
                         multi_fasta.write(iupac[str(sheet.cell(row=i, column=j).value)])
-                        print iupac[str(sheet.cell(row=i, column=j).value)]
         multi_fasta.write("\n")
