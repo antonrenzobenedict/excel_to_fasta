@@ -1,0 +1,3 @@
+virtualenv .venv
+. .venv/bin/activate
+python excel_to_fasta.py $1 $2

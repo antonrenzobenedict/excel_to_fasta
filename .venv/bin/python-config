@@ -1,4 +1,4 @@
-#!/home/abreyes/galaxy_tool/.venv/bin/python
+#!/home/abreyes/excel_to_fasta/.venv/bin/python
 
 import sys
 import getopt
