@@ -1,16 +1,17 @@
 #!/usr/bin/python
 
 
-import sys
+import sys, os
 
 from openpyxl import load_workbook
 reference = {}
 iupac = {"AA":"A", "GG":"G", "CC":"C", "TT":"T", "AG":"R", "TC":"Y", "AT":"W", "GC":"S", "TG":"K", "AC":"M", "--":"N"}
 
-excel_file = load_workbook(sys.argv[1])
+os.rename(sys.argv[1],sys.argv[1] + ".xlsx")
+excel_file = load_workbook(sys.argv[1] + ".xlsx")
 multi_fasta = open(sys.argv[2], 'w')
 
-reference_file = open('commonSNPs_3K-6K_pos+chrOnly.txt')
+reference_file = open(sys.argv[3])
 
 for line in reference_file:
         reference[str(line.split()[2])] = True
@@ -29,3 +30,6 @@ for i in range(7,row_count + 1):
                 if reference.get(position):
                         multi_fasta.write(iupac[str(sheet.cell(row=i, column=j).value)])
         multi_fasta.write("\n")
+        
+        
+os.rename(sys.argv[1] + ".xlsx",sys.argv[1])
