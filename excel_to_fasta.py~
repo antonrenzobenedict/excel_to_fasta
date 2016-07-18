@@ -23,12 +23,12 @@ col_count = sheet.max_column    #gets the column count
 
 
 for i in range(7,row_count + 1):
-        multi_fasta.write(">" + str(sheet.cell(row=i, column=4).value) + " " + str(sheet.cell(row=i, column=6).value) + "\n")   #writes the header of the fasta
+        multi_fasta.write(">" + str(sheet.cell(row=i, column=4).value) + "-" + str(sheet.cell(row=i, column=6).value) + "\n")   #writes the header of the fasta
         for j in range(14,col_count + 1):
                 position = str(sheet.cell(row=3, column=j).value)
                 if reference.get(position):     #if position is true
                         multi_fasta.write(iupac[str(sheet.cell(row=i, column=j).value)])        #decode and write it using the iupac naming convention
-        multi_fasta.write("\n")
+        multi_fasta.write("\n") #writes a newline 
         
         
 os.rename(sys.argv[1] + ".xlsx",sys.argv[1])    #renames the excel file back to .dat file
