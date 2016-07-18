@@ -23,7 +23,7 @@ col_count = sheet.max_column    #gets the column count
 
 
 for i in range(7,row_count + 1):
-        multi_fasta.write(">" + str(sheet.cell(row=i, column=4).value) + "-" + str(sheet.cell(row=i, column=6).value) + "\n")   #writes the header of the fasta
+        multi_fasta.write(">" + str(sheet.cell(row=i, column=4).value).split()[0] + "_" + str(sheet.cell(row=i, column=4).value).split()[1]  + "_" + str(sheet.cell(row=i, column=6).value) + "\n")   #writes the header of the fasta
         for j in range(14,col_count + 1):
                 position = str(sheet.cell(row=3, column=j).value)
                 if reference.get(position):     #if position is true
