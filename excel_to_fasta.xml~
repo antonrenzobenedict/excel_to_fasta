@@ -4,7 +4,7 @@
 	         excel_to_fasta.py $excel $output $reference
  	</command>
 	<inputs>
-	        <param format="tabular" name="reference" type="data" label="Reference File" />
+	        <param format="txt" name="reference" type="data" label="Reference File" />
 	        <param format="xlsx" name="excel" type="data" label="Excel File" />
 	</inputs>
 	<outputs>

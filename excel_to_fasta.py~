@@ -1,8 +1,9 @@
 #!/usr/bin/python
 
 
-import sys, os
+import sys, os, warnings
 
+warnings.simplefilter("ignore")
 from openpyxl import load_workbook      #To read excel file imported from openpyxl library
 reference = {}  #Initialize Dictionary
 iupac = {"AA":"A", "GG":"G", "CC":"C", "TT":"T", "AG":"R", "TC":"Y", "AT":"W", "GC":"S", "TG":"K", "AC":"M", "--":"N"}  #Dictionary for IUPAC Naming Convention

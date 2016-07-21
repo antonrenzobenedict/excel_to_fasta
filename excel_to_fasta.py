@@ -1,8 +1,9 @@
 #!/usr/bin/python
 
 
-import sys, os
+import sys, os, warnings
 
+warnings.simplefilter("ignore")
 from openpyxl import load_workbook      #To read excel file imported from openpyxl library
 reference = {}  #Initialize Dictionary
 iupac = {"AA":"A", "GG":"G", "CC":"C", "TT":"T", "AG":"R", "TC":"Y", "AT":"W", "GC":"S", "TG":"K", "AC":"M", "--":"N"}  #Dictionary for IUPAC Naming Convention
@@ -23,7 +24,7 @@ col_count = sheet.max_column    #gets the column count
 
 
 for i in range(7,row_count + 1):
-        multi_fasta.write(">" + str(sheet.cell(row=i, column=4).value).split()[0] + "_" + str(sheet.cell(row=i, column=4).value).split()[1]  + "_" + str(sheet.cell(row=i, column=6).value) + "\n")   #writes the header of the fasta
+        multi_fasta.write(">" + str(sheet.cell(row=i, column=4).value).replace(" ","_") + "_" + str(sheet.cell(row=i, column=6).value) + "\n")   #writes the header of the fasta
         for j in range(14,col_count + 1):
                 position = str(sheet.cell(row=3, column=j).value)
                 if reference.get(position):     #if position is true
